@@ -24,15 +24,6 @@ jobs:
           profile: minimal
           components: rustfmt
 
-      - name: Cache cargo dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cache/registry/index
-            ~/.cargo/registry/cache
-            ~/.cargo/git/db
-          key: cargo-deps-${{ hashFiles('**/Cargo.lock') }}
-
       - name: Check formatting
         uses: actions-rs/cargo@v1
         with:
@@ -58,7 +49,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            ~/.cache/registry/index
+            ~/.cargo/registry/index
             ~/.cargo/registry/cache
             ~/.cargo/git/db
           key: cargo-deps-${{ hashFiles('**/Cargo.lock') }}
@@ -87,7 +78,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            ~/.cache/registry/index
+            ~/.cargo/registry/index
             ~/.cargo/registry/cache
             ~/.cargo/git/db
           key: cargo-deps-${{ hashFiles('**/Cargo.lock') }}

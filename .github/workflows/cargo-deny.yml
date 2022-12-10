@@ -3,15 +3,19 @@ name: cargo-deny
 on:
   push:
     paths:
+      - ".github/workflows/**"
       - "**/Cargo.toml"
       - "**/Cargo.lock"
       - "deny.toml"
   pull_request:
     paths:
+      - ".github/workflows/**"
       - "**/Cargo.toml"
       - "**/Cargo.lock"
       - "deny.toml"
   workflow_dispatch:
+  schedule:
+    - cron: "16 15 * * 3"
 
 jobs:
   cargo-deny:

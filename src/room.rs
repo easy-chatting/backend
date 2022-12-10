@@ -1,8 +1,8 @@
-use std::collections::HashMap;
 use crate::crypto::RoomId;
 use crate::ClientId;
 use anyhow::anyhow;
 use base64ct::{Base64Url, Encoding};
+use std::collections::HashMap;
 use tokio::sync::mpsc;
 use warp::ws::Message;
 
@@ -18,7 +18,7 @@ pub struct Room {
     pub invite_link: String,
     pub state: RoomState,
     // pub clients: Vec<ClientId>,
-    pub clients: HashMap<ClientId, mpsc::UnboundedSender<Message>>
+    pub clients: HashMap<ClientId, mpsc::UnboundedSender<Message>>,
 }
 
 impl Room {
@@ -50,7 +50,7 @@ impl Room {
     //         .filter_map(|id| if id == client_id { Some(*id) } else { None })
     //         .collect()
     // }
-    
+
     pub fn get_other_clients(&self, client_id: &ClientId) -> Vec<mpsc::UnboundedSender<Message>> {
         self.clients
             .iter()
@@ -60,7 +60,8 @@ impl Room {
                 } else {
                     None
                 }
-            }).collect()
+            })
+            .collect()
     }
 }
 

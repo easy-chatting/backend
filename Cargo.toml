@@ -20,4 +20,4 @@ rand = "0.8.5"
 rand_chacha = "0.3.1"
 sha2 = { version = "0.10.6" }
 base64ct = "1.5.3"
-serde = { version = "1.0.149", features = ["derive"] }
+serde = { version = "1.0.152", features = ["derive"] }
